@@ -3,50 +3,34 @@
 ## Overview
 SAAI is a local AI academic assistant developed for COMP2319.
 
-Features:
+## Features
 - Search course documents with citations.
 - List assignments and deadlines.
 - Draft professional emails.
-- Require human approval for email actions.
-- Answer academic questions using a local language model.
+- Human approval for email actions.
+- Local AI language model.
 
 ## Technology
 - Python 3.14.7
-- Ollama
-- Qwen 2.5 7B
+- Ollama and Qwen 2.5 7B
 - Nomic Embed Text
 - OpenAI Python SDK
-- NumPy
-- Pytest
-
-## Install Models
-ollama pull qwen2.5:7b
-ollama pull nomic-embed-text:latest
+- NumPy and Pytest
 
 ## Installation
-Create and activate a virtual environment:
+1. Create virtual environment: python -m venv .venv
+2. Activate: .venv\Scripts\Activate.ps1
+3. Install: pip install -r requirements.txt
+4. Download models:
+   - ollama pull qwen2.5:7b
+   - ollama pull nomic-embed-text:latest
 
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+## Run
+- Build index: python src\memory.py
+- Start assistant: python -m src.agent
+- Approval tool: python -m src.approval_cli
 
-Install dependencies:
-
-pip install -r requirements.txt
-
-## Build Document Index
-python src\memory.py
-
-## Run Assistant
-python -m src.agent
-
-Type exit to stop.
-
-## Human Approval
-python -m src.approval_cli
-
-The user reviews pending email requests and types APPROVE or REJECT.
-The AI cannot approve its own requests.
-Email delivery is simulated; no real email is sent.
+Email delivery is simulated. No real email is sent.
 
 ## Safety
 - Prompt injection detection
@@ -54,42 +38,31 @@ Email delivery is simulated; no real email is sent.
 - Input length limits
 - Output secret checks
 - Human approval
-- Project constitution in SOUL.md
+- SOUL.md constitution
 
 ## Context Limits
-- Maximum agent turns: 5
+- Maximum turns: 5
 - Maximum context messages: 10
 - Estimated token budget: 6000
 - Temperature: 0
 
 ## Tests
-Run automated tests:
-
-pytest -v
-
-Run security tests:
-
-python run_red_team.py
-
-Latest verified results:
 - Automated tests: 22 passed
 - Red-team cases: 12 passed, 0 failed
 
 ## Project Structure
-src/       Application source code
-data/      Fictional academic documents and local data
-tests/     Automated and red-team tests
-reports/   Evaluation results
-SOUL.md    Assistant constitution
+- src: Application code
+- data: Fictional academic documents
+- tests: Automated and red-team tests
+- reports: Evaluation results
+- SOUL.md: Assistant constitution
 
 ## Privacy
-The included academic data is fictional.
-Do not upload credentials, passwords, API keys, or private student data.
+The included academic data is fictional. Do not upload credentials, passwords, API keys, or private student data.
 
 ## Submission
-Course: COMP2319
-Project: Student Academic Assistant AI
-Student: Abdullah Arshad
-
-GitHub repository: To be added
-Demonstration video: To be added
+- Course: COMP2319
+- Project: Student Academic Assistant AI
+- Student: Abdullah Arshad
+- GitHub: https://github.com/abdullah2000nau-dot/COMP2319-Student-Academic-Assistant
+- Demonstration video: To be added
