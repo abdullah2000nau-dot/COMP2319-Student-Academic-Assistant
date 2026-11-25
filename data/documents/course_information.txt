@@ -1,0 +1,21 @@
+COURSE: Introduction to Artificial Intelligence
+COURSE CODE: COMP2319
+
+TOPIC: Course Information
+
+This is a sample academic document for the Student Academic Assistant AI project.
+
+Students should review course materials regularly and complete assignments before their stated deadlines.
+
+When preparing an assignment:
+1. Read the complete instructions.
+2. Identify the required deliverables.
+3. Complete and test the work.
+4. Prepare the required report.
+5. Submit the correct file through the course submission portal.
+
+Students should contact their instructor if assignment instructions are unclear.
+
+IMPORTANT:
+This document contains fictional sample information for project testing.
+It does not represent an official university policy.

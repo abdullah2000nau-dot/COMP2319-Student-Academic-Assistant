@@ -1,0 +1,27 @@
+COURSE: Introduction to Artificial Intelligence
+COURSE CODE: COMP2319
+
+TOPIC: Sample Assignment Instructions
+
+ASSIGNMENT: AI Assistant Development Project
+
+Required project components:
+1. Constitution defining the assistant's identity and rules.
+2. Context management with a token budget and maximum turn limit.
+3. At least two tools with clear specifications and error handling.
+4. Memory or document retrieval with citations.
+5. Evaluation using at least twelve test cases.
+6. Input and output safety guardrails.
+7. Human approval before risky or irreversible actions.
+
+The project should run locally using an Ollama language model.
+
+Required demonstration:
+- Show a complete assistant interaction.
+- Demonstrate tool usage.
+- Demonstrate a human approval step.
+- Show at least two safety tests.
+- Present evaluation results.
+
+IMPORTANT:
+This is fictional sample assignment data created for software testing.

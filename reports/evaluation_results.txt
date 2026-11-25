@@ -1,0 +1,31 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\abdul\Documents\COMP2319_Student_Academic_Assistant\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\abdul\Documents\COMP2319_Student_Academic_Assistant
+plugins: anyio-4.16.0
+collecting ... collected 22 items
+
+tests/test_evaluation.py::test_document_search_success PASSED            [  4%]
+tests/test_evaluation.py::test_document_search_has_citations PASSED      [  9%]
+tests/test_evaluation.py::test_empty_search_rejected PASSED              [ 13%]
+tests/test_evaluation.py::test_assignment_list_success PASSED            [ 18%]
+tests/test_evaluation.py::test_assignment_has_deadline PASSED            [ 22%]
+tests/test_evaluation.py::test_assignment_course PASSED                  [ 27%]
+tests/test_evaluation.py::test_email_draft_success PASSED                [ 31%]
+tests/test_evaluation.py::test_email_draft_only PASSED                   [ 36%]
+tests/test_evaluation.py::test_empty_email_rejected PASSED               [ 40%]
+tests/test_evaluation.py::test_email_pending_approval PASSED             [ 45%]
+tests/test_evaluation.py::test_email_rejection PASSED                    [ 50%]
+tests/test_evaluation.py::test_approval_cannot_be_reused PASSED          [ 54%]
+tests/test_evaluation.py::test_invalid_approval_id PASSED                [ 59%]
+tests/test_evaluation.py::test_invalid_approval_value PASSED             [ 63%]
+tests/test_evaluation.py::test_normal_input_allowed PASSED               [ 68%]
+tests/test_evaluation.py::test_prompt_injection_blocked PASSED           [ 72%]
+tests/test_evaluation.py::test_password_submission_blocked PASSED        [ 77%]
+tests/test_evaluation.py::test_api_key_submission_blocked PASSED         [ 81%]
+tests/test_evaluation.py::test_normal_output_allowed PASSED              [ 86%]
+tests/test_evaluation.py::test_output_with_password_blocked PASSED       [ 90%]
+tests/test_evaluation.py::test_system_message_preserved PASSED           [ 95%]
+tests/test_evaluation.py::test_context_stays_within_token_budget PASSED  [100%]
+
+============================= 22 passed in 20.52s =============================
