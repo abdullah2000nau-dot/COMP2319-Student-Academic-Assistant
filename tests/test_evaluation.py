@@ -1,3 +1,4 @@
+import json
 import pytest
 
 from src import tools
@@ -74,9 +75,10 @@ def test_empty_email_rejected():
     assert result["success"] is False
 
 
-# 10. Email approval starts as pending
+# 10. Email approval starts as pending and is not sent automatically
 def test_email_pending_approval(tmp_path, monkeypatch):
-    monkeypatch.setattr(tools, "OUTBOX_FILE", tmp_path / "outbox.json")
+    outbox = tmp_path / "outbox.json"
+    monkeypatch.setattr(tools, "OUTBOX_FILE", outbox)
 
     result = submit_email_for_approval(
         "instructor@example.edu",
@@ -86,6 +88,11 @@ def test_email_pending_approval(tmp_path, monkeypatch):
 
     assert result["success"] is True
     assert result["status"] == "PENDING_APPROVAL"
+
+    records = json.loads(outbox.read_text(encoding="utf-8"))
+    assert len(records) == 1
+    assert records[0]["status"] == "PENDING"
+    assert records[0]["recipient"] == "instructor@example.edu"
 
 
 # 11. Human can reject an email
@@ -187,3 +194,32 @@ def test_context_stays_within_token_budget():
     result = trim_context(messages)
 
     assert estimate_tokens(result) <= 6000
+
+# Personal information protection tests
+def test_cnic_submission_blocked():
+    allowed, message = check_input("My CNIC is 12345-1234567-1")
+    assert allowed is False
+
+
+def test_phone_number_submission_blocked():
+    allowed, message = check_input("My phone is 03001234567")
+    assert allowed is False
+
+# Tool failure handling test
+def test_tool_failure_returns_safe_error(monkeypatch):
+    from src import agent
+
+    def failing_search(question):
+        raise RuntimeError("Simulated tool failure")
+
+    monkeypatch.setattr(agent, "search_course_materials", failing_search)
+
+    result = agent.get_tool_result(
+        "search_course_materials",
+        {"question": "Test question"}
+    )
+
+    assert result["success"] is False
+    assert result["error"] == "Tool failed: RuntimeError"
+
+

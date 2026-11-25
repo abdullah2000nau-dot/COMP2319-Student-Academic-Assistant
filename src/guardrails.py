@@ -15,6 +15,8 @@ SECRET_PATTERNS = [
     r"(?i)\bpassword\s*[:=]\s*\S+",
     r"(?i)\bapi[_ -]?key\s*[:=]\s*\S+",
     r"\bsk-[A-Za-z0-9_-]{20,}\b",
+    r"\b\d{5}-\d{7}-\d\b",
+    r"(?<!\d)(?:\+92|0)3\d{9}(?!\d)",
 ]
 
 def check_input(message):
@@ -32,7 +34,7 @@ def check_input(message):
 
     for pattern in SECRET_PATTERNS:
         if re.search(pattern, message):
-            return False, "Do not share passwords or API keys."
+            return False, "Do not share passwords, API keys, or personal information."
 
     return True, "Input accepted."
 
